@@ -5,6 +5,7 @@ public class Main {
         DataService dataService = new DataService();
 
         //dataService.getAllEmployees();
-        dataService.getEmployeeById(1L);
+        //dataService.getEmployeeById(1L);
+        dataService.updateEmployeeSalary(1L, 80000D);
     }
 }

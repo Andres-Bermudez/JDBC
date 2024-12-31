@@ -31,7 +31,6 @@ public class DataService {
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("first_name"));
             }
-
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -43,7 +42,6 @@ public class DataService {
                      FROM employees
                      WHERE id = ?
                      """;
-
         try {
             connection = DriverManager.getConnection(url, user, password);
 
@@ -57,6 +55,26 @@ public class DataService {
             } else {
                 System.out.println("\nNo se encontro ningun registro con este id.");
             }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void updateEmployeeSalary(Long idEmployee, Double newSalary) {
+        try {
+            connection = DriverManager.getConnection(url, user, password);
+            String sql = """
+                         UPDATE employees
+                         SET salary = ?
+                         WHERE id = ?;
+                         """;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDouble(1, newSalary);
+            preparedStatement.setLong(2, idEmployee);
+
+            preparedStatement.executeUpdate();
+            System.out.println("\nEl salario del empleado con el id:" +
+                    " (" + idEmployee + ") fue actualizado correctamente.");
 
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
