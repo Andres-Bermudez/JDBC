@@ -17,7 +17,7 @@ public class DataService {
 
     public void getAllEmployees() {
         try {
-            // Conexion con la base de datos
+            // Conexion con la base de datos.
             connection = DriverManager.getConnection(url, user, password);
 
             // Crear la consulta.
@@ -37,14 +37,13 @@ public class DataService {
     }
 
     public void getEmployeeById(Long idEmployee) {
-        String sql = """
-                     SELECT *
-                     FROM employees
-                     WHERE id = ?
-                     """;
         try {
             connection = DriverManager.getConnection(url, user, password);
-
+            String sql = """
+                         SELECT *
+                         FROM employees
+                         WHERE id = ?
+                         """;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1, idEmployee);
 
@@ -76,6 +75,23 @@ public class DataService {
             System.out.println("\nEl salario del empleado con el id:" +
                     " (" + idEmployee + ") fue actualizado correctamente.");
 
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void deleteEmployee(Long idEmployee) {
+        try {
+            connection = DriverManager.getConnection(url, user, password);
+            String sql = """
+                         DELETE FROM employees
+                         WHERE id = ?;
+                         """;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, idEmployee);
+
+            preparedStatement.executeUpdate();
+            System.out.println(" Se elimino el empleado con el id: (" + idEmployee + ") de forma exitosa." );
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }

@@ -6,6 +6,7 @@ public class Main {
 
         //dataService.getAllEmployees();
         //dataService.getEmployeeById(1L);
-        dataService.updateEmployeeSalary(1L, 80000D);
+        //dataService.updateEmployeeSalary(1L, 80000D);
+        dataService.deleteEmployee(3L);
     }
 }
