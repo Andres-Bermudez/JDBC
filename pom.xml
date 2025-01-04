@@ -5,7 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.platzi</groupId>
+<<<<<<< HEAD
     <artifactId>JDBC</artifactId>
+=======
+    <artifactId>CrudJDBC</artifactId>
+>>>>>>> 40f6ba390f6e581043df916efb4ad328d778cd23
     <version>1.0-SNAPSHOT</version>
 
     <properties>
