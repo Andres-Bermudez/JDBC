@@ -5,21 +5,12 @@ import java.util.List;
 import java.util.ArrayList;
 import com.platzi.model.Employee;
 import com.platzi.util.DatabaseConnection;
-/*
- * En Java, al usar JDBC:
- *
- * executeQuery(): Se utiliza para sentencias SQL que recuperan datos de la base de datos,
- *                 como SELECT. Devuelve un ResultSet que contiene los resultados de la consulta.
- *
- * executeUpdate(): Se utiliza para sentencias SQL que modifican datos o la estructura de la
- *                  base de datos, como INSERT, UPDATE, DELETE o ALTER TABLE. Devuelve un
- *                  int que indica la cantidad de filas afectadas.
-*/
+
 public class EmployeeRepository implements Repository<Employee> {
 
-    // Connection method.
+    // Conexion a la base de datos.
     private Connection getConnection() throws SQLException {
-        return DatabaseConnection.getInstance();
+        return DatabaseConnection.getConecction();
     }
 
     @Override

@@ -8,13 +8,14 @@ import com.platzi.model.Employee;
 import com.platzi.repository.Repository;
 import javax.swing.table.DefaultTableModel;
 import com.platzi.repository.EmployeeRepository;
+import com.platzi.util.DatabaseConnection;
 
 public class SwingApp extends JFrame {
 
     private final Repository<Employee> employeeRepository;
     private final JTable employeeTable;
 
-    public SwingApp() {
+    public SwingApp() throws SQLException {
         // Configurar la ventana.
         setTitle("Gestión de Empleados");
         setSize(1000, 300);
@@ -114,6 +115,7 @@ public class SwingApp extends JFrame {
             // Establecer el modelo de tabla actualizado.
             employeeTable.setModel(model);
         } catch(Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error al obtener los empleados de la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
